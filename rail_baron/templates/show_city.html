@@ -1,0 +1,9 @@
+{% block body %}
+
+<h2>Your city is <em>{{ city }}</em></h2>
+
+<form action="{{ urls.build('get region') }}">
+  <input type="submit" value="Choose another region" />
+</form>
+
+{% endblock %}
