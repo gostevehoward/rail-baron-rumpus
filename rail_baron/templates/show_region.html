@@ -8,4 +8,14 @@
   <input type="submit" value="Choose a city in {{ region }}" />
 </form>
 
+<h3>But I'm already in {{ region }}!</h3>
+<p>Fine, then choose a region:</p>
+{% for new_region in all_regions %}
+  {% if new_region != region %}
+    <form action="{{ urls.build('get city', {'region': new_region}) }}">
+      <input type="submit" value="{{ new_region }}" />
+    </form>
+  {% endif %}
+{% endfor %}
+
 {% endblock %}

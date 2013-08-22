@@ -38,7 +38,9 @@ class DestinationDataSource(object):
         reader = csv.DictReader(stream)
         for row in reader:
             region_map = data_maps[row['region'].strip()]
-            region_map[DiceRoll(row['odd/even'].strip(), int(row['number']))] = row['name'].strip()
+            region_map[DiceRoll(row['odd/even'].strip(), int(row['number']))] = (
+                row['name'].strip().lower()
+            )
         return cls(data_maps)
 
     def _roll_dice(self):
@@ -46,6 +48,9 @@ class DestinationDataSource(object):
             random.choice(['odd', 'even']),
             random.randrange(1, 7) + random.randrange(1, 7),
         )
+
+    def get_regions(self):
+        return set(self._data_maps['region'].itervalues())
 
     def pick_region(self):
         return self._data_maps['region'][self._roll_dice()]
@@ -131,7 +136,11 @@ class RailBaronApp(object):
         adapter = self._url_map.bind_to_environ(request.environ)
         jinja_wrapper = JinjaWrapper(
             self._jinja_environment,
-            dict(urls=adapter, all_cities=self._payoff_data_source.get_cities()),
+            dict(
+                urls=adapter,
+                all_cities=self._payoff_data_source.get_cities(),
+                all_regions=self._destination_data_source.get_regions(),
+            ),
         )
         request_handler = RequestHandler(
             request,
