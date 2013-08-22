@@ -48,7 +48,7 @@ class DestinationDataSource(object):
         )
 
     def pick_region(self):
-        return self._data_maps['area'][self._roll_dice()]
+        return self._data_maps['region'][self._roll_dice()]
 
     def pick_city(self, region):
         return self._data_maps[region][self._roll_dice()]

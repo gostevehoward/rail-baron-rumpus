@@ -1,0 +1,177 @@
+region,odd/even,number,name,
+region,odd,2,Plains,1
+region,even,2,southwest,1
+region,odd,3,southeast,2
+region,even,3,south central,2
+region,odd,4,southeast,3
+region,even,4,south central,3
+region,odd,5,southeast,4
+region,even,5,south central,4
+region,odd,6,north central,5
+region,even,6,southwest,5
+region,odd,7,north central,6
+region,even ,7,southwest,6
+region,odd,8,northeast,5
+region,odd,9,northeast,4
+region,odd,10,northeast,3
+region,odd,11,northeast,2
+region,odd,12,northeast,1
+region,even,8,plains,5
+region,even,9,northwest,4
+region,even,10,northwest,3
+region,even,11,plains,2
+region,even,12,northwest,1
+northeast,odd,2,New York,1
+northeast,odd,3,new york,2
+northeast,odd,4,new york,3
+northeast,odd,5,albany,4
+northeast,odd,6,boston,5
+northeast,odd,7,buffalo,6
+northeast,odd,8,boston,5
+northeast,odd,9,portland,4
+northeast,odd,10,new york,3
+northeast,odd,11,new york,2
+northeast,odd,12,new york,1
+northeast,even,2,new york,1
+northeast,even ,3,washington,2
+northeast,even,4,pittsburgh,3
+northeast,even,5,pittsburgh,4
+northeast,even,6,philadelphia,5
+northeast,even,7,washington,6
+northeast,even,8,philadelphia,5
+northeast,even,9,baltimore,4
+northeast,even,10,baltimore,3
+northeast,even ,11,baltimore,2
+northeast,even,12,new york,1
+southeast,odd,2,charlotte,1
+southeast,odd,3,charlotte,2
+southeast,odd,4,chattanooga,3
+southeast,odd,5,atlanta,4
+southeast,odd,6,atlanta,5
+southeast,odd,7,atlanta,6
+southeast,odd,8,richmond,5
+southeast,odd,9,knoxville,4
+southeast,odd,10,mobile,3
+southeast,odd,11,knoxville,2
+southeast,odd ,12,mobile,1
+southeast,even,2,norfolk,1
+southeast,even,3,norfolk,2
+southeast,even,4,norfolk,3
+southeast,even,5,charleston,4
+southeast,even,6,miami,5
+southeast,even,7,jacksonville,6
+southeast,even,8,miami,5
+southeast,even,9,tampa,4
+southeast,even,10,tampa,3
+southeast,even,11,mobile,2
+southeast,even ,12,norfolk,1
+north central,odd ,2,cleveland,1
+north central,odd,3,cleveland,2
+north central,odd,4,cleveland,3
+north central,odd,5,cleveland,4
+north central,odd,6,detroit,5
+north central,odd,7,detroit,6
+north central,odd,8,indianapolis,5
+north central,odd,9,milwaukee,4
+north central,odd,10,milwaukee,3
+north central,odd,11,chicago,2
+north central,odd,12,milwaukee,1
+north central,even,2,cincinnati,1
+north central,even,3,chicago,2
+north central,even,4,cincinnati,3
+north central,even,5,cincinnati,4
+north central,even,6,columbus,5
+north central,even,7,chicago,6
+north central,even,8,chicago,5
+north central,even,9,st louis,4
+north central,even,10,st louis,3
+north central,even,11,st louis,2
+north central,even,12,chicago,1
+south central,odd,2,memphis,1
+south central,odd,3,memphis,2
+south central,odd,4,memphis,3
+south central,odd,5,little rock,4
+south central,odd,6,new orleans,5
+south central,odd,7,birmingham,6
+south central,odd,8,louisville,5
+south central,odd,9,nashville,4
+south central,odd,10,nashville,3
+south central,odd,11,louisville,2
+south central,odd,12,memphis,1
+south central,even,2,shreveport,1
+south central,even,3,shreveport,2
+south central,even,4,dallas,3
+south central,even,5,new orleans,4
+south central,even,6,dallas,5
+south central,even,7,san antonio,6
+south central,even,8,houston,5
+south central,even,9,houston,4
+south central,even,10,fort worth,3
+south central,even,11,fort worth,2
+south central,even,12,fort worth,1
+plains,odd,2,kansas city,1
+plains,odd,3,kansas city,2
+plains,odd,4,denver,3
+plains,odd,5,denver,4
+plains,odd,6,denver,5
+plains,odd,7,kansas city,6
+plains,odd,8,kansas city,5
+plains,odd,9,kansas city,4
+plains,odd,10,pueblo,3
+plains,odd,11,pueblo,2
+plains,odd,12,oklahoma city,1
+plains,even,2,oklahoma city,1
+plains,even,3,st paul,2
+plains,even,4,minneapolis,3
+plains,even,5,st paul,4
+plains,even,6,minneapolis,5
+plains,even,7,oklahoma city,6
+plains,even,8,des moines,5
+plains,even,9,omaha,4
+plains,even,10,omaha,3
+plains,even,11,fargo,2
+plains,even,12,fargo,1
+northwest,odd,2,spokane,1
+northwest,odd,3,spokane,2
+northwest,odd,4,seattle,3
+northwest,odd,5,seattle,4
+northwest,odd,6,seattle,5
+northwest,odd,7,seattle,6
+northwest,odd,8,rapid city,5
+northwest,odd,9,casper,4
+northwest,odd,10,billings,3
+northwest,odd,11,billings,2
+northwest,odd,12,spokane,1
+northwest,even,2,spokane,1
+northwest,even,3,salt lake city,2
+northwest,even,4,salt lake city,3
+northwest,even,5,salt lake city,4
+northwest,even,6,portland,5
+northwest,even,7,portland,6
+northwest,even,8,portland,5
+northwest,even,9,pocatello,4
+northwest,even,10,butte,3
+northwest,even,11,butte,2
+northwest,even,12,portland,1
+southwest,odd ,2,san diego,1
+southwest,odd ,3,san diego,2
+southwest,odd ,4,reno,3
+southwest,odd ,5,san diego,4
+southwest,odd ,6,sacramento,5
+southwest,odd ,7,las vegas,6
+southwest,odd ,8,phoenix,5
+southwest,odd ,9,el paso,4
+southwest,odd ,10,tucumcari,3
+southwest,odd ,11,phoenix,2
+southwest,odd ,12,phoenix,1
+southwest,even,2,los angeles,1
+southwest,even,3,oakland,2
+southwest,even,4,oakland,3
+southwest,even,5,oakland,4
+southwest,even,6,los angeles,5
+southwest,even,7,los angeles,6
+southwest,even,8,los angeles,5
+southwest,even,9,san francisco,4
+southwest,even,10,san francisco,3
+southwest,even,11,san francisco,2
+southwest,even,12,san francisco,1
