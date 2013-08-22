@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head><title>RAIL BARON</title></head>
+  <head>
+    <title>RAIL BARON</title>
+    <link rel="stylesheet" href="/static/rail_baron.css" />
+  </head>
 
   <body>
     <a href={{ urls.build('index') }}>Home</a>
 
     {% block body %}{% endblock %}
 
-    <form action="{{ urls.build('get region') }}">
-      <input type="submit" value="Choose a region" />
-    </form>
+    <div class="base-form">
+      <form action="{{ urls.build('get region') }}">
+        <input type="submit" value="Choose a region" />
+      </form>
+    </div>
 
-    <form action="{{ urls.build('lookup payoff') }}">
-      <select name="source_city">
-        {% for city in all_cities %}
-          <option name={{ city }}>{{ city }}</option>
-        {% endfor %}
-      </select>
-      <select name="destination_city">
-        {% for city in all_cities %}
-          <option name={{ city }}>{{ city }}</option>
-        {% endfor %}
-      </select>
-      <input type="submit" value="Lookup payoff" />
-    </form>
+    <div class="base-form">
+      <form action="{{ urls.build('lookup payoff') }}">
+        <select name="source_city">
+          {% for city in all_cities %}
+            <option name={{ city }}>{{ city }}</option>
+          {% endfor %}
+        </select>
+        <select name="destination_city">
+          {% for city in all_cities %}
+            <option name={{ city }}>{{ city }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Lookup payoff" />
+      </form>
+    </div>
 
   </body>
 </html>
