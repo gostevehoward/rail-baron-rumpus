@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import collections
 import csv
 import logging
 import os
@@ -24,17 +25,32 @@ class JinjaWrapper(object):
         context = dict(self._base_context, **environment)
         return wrappers.Response(template.render(**context), mimetype=mime_type)
 
+DiceRoll = collections.namedtuple('DiceRoll', ['odd_or_even', 'number'])
+
 class DataSource(object):
+    def __init__(self, data_maps):
+        self._data_maps = data_maps
+
     @classmethod
     def from_csv(cls, stream):
+        data_maps = collection.defaultdict(lambda: {})
         reader = csv.DictReader(stream)
-        return cls()
+        for row in reader:
+            region_map = data_maps[row['region']]
+            region_map[DiceRoll(row['odd/even'], row['number'])] = row['name']
+        return cls(data_maps)
+
+    def _roll_dice(self):
+        return DiceRoll(
+            random.choice('odd', 'even'),
+            random.randrange(1, 7) + random.randrange(1, 7),
+        )
 
     def pick_region(self):
-        return 'northeast'
+        return self._data_maps['area'][self._roll_dice()]
 
     def pick_city(self, region):
-        return 'new york'
+        return self._data_maps[region][self._roll_dice()]
 
 class RequestHandler(object):
     def __init__(self, request, urls, jinja_wrapper, data_source):
