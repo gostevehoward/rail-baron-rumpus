@@ -6,5 +6,24 @@
     <a href={{ urls.build('index') }}>Home</a>
 
     {% block body %}{% endblock %}
+
+    <form action="{{ urls.build('get region') }}">
+      <input type="submit" value="Choose a region" />
+    </form>
+
+    <form action="{{ urls.build('lookup payoff') }}">
+      <select name="source_city">
+        {% for city in all_cities %}
+          <option name={{ city }}>{{ city }}</option>
+        {% endfor %}
+      </select>
+      <select name="destination_city">
+        {% for city in all_cities %}
+          <option name={{ city }}>{{ city }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Lookup payoff" />
+    </form>
+
   </body>
 </html>
