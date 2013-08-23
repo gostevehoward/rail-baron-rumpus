@@ -19,13 +19,15 @@
     <div class="base-form">
       <form action="{{ urls.build('lookup payoff') }}">
         <select name="source_city">
-          {% for city in all_cities %}
-            <option name={{ city }}>{{ city }}</option>
+          {% for source_city in all_cities %}
+            <option name={{ source_city }}>{{ source_city }}</option>
           {% endfor %}
         </select>
         <select name="destination_city">
-          {% for city in all_cities %}
-            <option name={{ city }}>{{ city }}</option>
+          {% for dest_city in all_cities %}
+            <option name={{ dest_city }} {% if dest_city == city %} selected {% endif %}>
+              {{ dest_city }}
+            </option>
           {% endfor %}
         </select>
         <input type="submit" value="Lookup payoff" />

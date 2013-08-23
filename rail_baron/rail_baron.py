@@ -26,6 +26,9 @@ class JinjaWrapper(object):
         context = dict(self._base_context, **environment)
         return wrappers.Response(template.render(**context), mimetype=mime_type)
 
+def capitalize_words(string):
+    return ' '.join(word.capitalize() for word in string.strip().split())
+
 DiceRoll = collections.namedtuple('DiceRoll', ['odd_or_even', 'number'])
 
 class DestinationDataSource(object):
@@ -37,9 +40,9 @@ class DestinationDataSource(object):
         data_maps = collections.defaultdict(lambda: {})
         reader = csv.DictReader(stream)
         for row in reader:
-            region_map = data_maps[row['region'].strip()]
+            region_map = data_maps[capitalize_words(row['region'])]
             region_map[DiceRoll(row['odd/even'].strip(), int(row['number']))] = (
-                row['name'].strip().lower()
+                capitalize_words(row['name'])
             )
         return cls(data_maps)
 
@@ -50,10 +53,10 @@ class DestinationDataSource(object):
         )
 
     def get_regions(self):
-        return set(self._data_maps['region'].itervalues())
+        return set(self._data_maps['Region'].itervalues())
 
     def pick_region(self):
-        return self._data_maps['region'][self._roll_dice()]
+        return self._data_maps['Region'][self._roll_dice()]
 
     def pick_city(self, region):
         return self._data_maps[region][self._roll_dice()]
@@ -84,18 +87,16 @@ class RequestHandler(object):
         return self._jinja_wrapper.render_template('index.html')
 
     def _log(self, message):
-        logging.warn('{}: {}'.format(self._request.remote_addr, message))
+        logging.warn('{}: {}\n'.format(self._request.remote_addr, message))
 
     def get_region(self):
         region = self._destination_data_source.pick_region()
         self._log('Picked region {}'.format(region))
-        logging.warn('')
         return self._jinja_wrapper.render_template('show_region.html', {'region': region})
 
     def get_city(self, region):
         city = self._destination_data_source.pick_city(region)
         self._log('Picked city {} for region {}'.format(city, region))
-        logging.warn('')
         return self._jinja_wrapper.render_template(
             'show_city.html',
             {'region': region, 'city': city},
@@ -106,7 +107,6 @@ class RequestHandler(object):
         destination_city = self._request.args['destination_city']
         payoff = self._payoff_data_source.get_payoff(source_city, destination_city)
         self._log('Payoff from {} to {} is {}'.format(source_city, destination_city, payoff))
-        logging.warn('')
         return self._jinja_wrapper.render_template(
             'show_payoff.html',
             {
