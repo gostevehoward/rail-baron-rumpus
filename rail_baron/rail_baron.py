@@ -85,12 +85,14 @@ class RequestHandler(object):
 
     def get_region(self):
         region = self._destination_data_source.pick_region()
-        logging.info('Picked region {}'.format(region))
+        logging.warn('Picked region {}'.format(region))
+        logging.warn('')
         return self._jinja_wrapper.render_template('show_region.html', {'region': region})
 
     def get_city(self, region):
         city = self._destination_data_source.pick_city(region)
-        logging.info('Picked city {} for region {}'.format(city, region))
+        logging.warn('Picked city {} for region {}'.format(city, region))
+        logging.warn('')
         return self._jinja_wrapper.render_template(
             'show_city.html',
             {'region': region, 'city': city},
@@ -100,6 +102,8 @@ class RequestHandler(object):
         source_city = self._request.args['source_city']
         destination_city = self._request.args['destination_city']
         payoff = self._payoff_data_source.get_payoff(source_city, destination_city)
+        logging.warn('Payoff from {} to {} is {}'.format(source_city, destination_city, payoff))
+        logging.warn('')
         return self._jinja_wrapper.render_template(
             'show_payoff.html',
             {
@@ -162,7 +166,7 @@ class RailBaronApp(object):
             raise
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.WARNING)
 
     with open('regions_and_cities.csv') as stream:
         destination_data_source = DestinationDataSource.from_csv(stream)
